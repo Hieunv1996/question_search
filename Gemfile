@@ -7,6 +7,9 @@ gem 'rails', '3.1.3'
 
 gem 'sqlite3'
 gem 'pry'
+gem 'heroku'
+gem 'execjs'
+gem 'therubyracer'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -34,3 +37,9 @@ group :test do
   # Pretty printed test output
   gem 'turn', '0.8.2', :require => false
 end
+
+group :production do
+  gem 'pg'
+  gem 'execjs'
+  gem 'therubyracer'
+end 
