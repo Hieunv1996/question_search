@@ -1,0 +1,26 @@
+<% content_for :page_name do %>
+  <h1>Listing questions</h1>
+<% end %>
+
+<%= form_tag(update_db_questions_path) do %>
+  <%= submit_tag("Update Database", :class=>"btn primary") %>
+<% end %>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+<% @questions.each do |question| %>
+  <tr>
+    <td><%= link_to 'Show', question %></td>
+    <td><%= link_to 'Edit', edit_question_path(question) %></td>
+    <td><%= link_to 'Destroy', question, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Question', new_question_path %>
