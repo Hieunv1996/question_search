@@ -6,7 +6,7 @@ class AddAttributesToQuestions < ActiveRecord::Migration
     add_column :questions, :date, :string
     add_column :questions, :timestamp, :string
     add_column :questions, :link, :string
-    add_column :questions, :type, :string
+    add_column :questions, :qtype, :string
     add_column :questions, :category_id, :integer
     add_column :questions, :category_name, :string
     add_column :questions, :user_id, :string

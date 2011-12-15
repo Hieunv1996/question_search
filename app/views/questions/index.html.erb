@@ -5,22 +5,32 @@
 <%= form_tag(update_db_questions_path) do %>
   <%= submit_tag("Update Database", :class=>"btn primary") %>
 <% end %>
-
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-<% @questions.each do |question| %>
-  <tr>
-    <td><%= link_to 'Show', question %></td>
-    <td><%= link_to 'Edit', edit_question_path(question) %></td>
-    <td><%= link_to 'Destroy', question, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
+<div class="apple_pagination" style="margin-bottom:10px">
+  <%= will_paginate @questions %>
+</div>
+<table class="bordered-table zebra-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>User Nick</th>
+      <th>Subject</th>
+      <th>Content</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @questions.each_with_index do |question, index| %>
+    <tr>
+      <td><%= index+1 %></td>
+      <td><%= question.user_nick %></td>
+      <td><%= link_to question.subject, question_path(question) %></td>
+      <td><%= question.content %></td>
+    </tr>
+    <% end %>
+  </tbody>
 </table>
-
-<br />
-
-<%= link_to 'New Question', new_question_path %>
+<div class="digg_pagination">
+  <div clas="page_info">
+    <%= page_entries_info @questions %>
+  </div>
+  <%= will_paginate @questions, :container => false %>
+</div>

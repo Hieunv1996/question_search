@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111212141726) do
+ActiveRecord::Schema.define(:version => 20111212144621) do
 
   create_table "questions", :force => true do |t|
     t.datetime "created_at"
@@ -35,6 +35,13 @@ ActiveRecord::Schema.define(:version => 20111212141726) do
     t.string   "chosen_answer_nick"
     t.string   "chosen_answer_timestamp"
     t.string   "chosen_answer_award_timestamp"
+  end
+
+  create_table "starts", :force => true do |t|
+    t.integer  "catefory_id"
+    t.integer  "start"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

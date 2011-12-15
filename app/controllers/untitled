@@ -1,0 +1,5 @@
+http://answers.yahooapis.com/AnswersService/V1/getByCategory?appid=dj0yJmk9QTY3anduM0E1SG9MJmQ9WVdrOVZVVjFabk5UTkdjbWNHbzlNelV4TVRZeSZzPWNvbnN1bWVyc2VjcmV0Jng9Y2M-&category_id=396545661&output=json&region=vn
+
+http://answers.yahooapis.com/AnswersService/V1/getByCategory?appid=dj0yJmk9QTY3anduM0E1SG9MJmQ9WVdrOVZVVjFabk5UTkdjbWNHbzlNelV4TVRZeSZzPWNvbnN1bWVyc2VjcmV0Jng9Y2M-&category_id=396545671&output=json
+
+http://answers.yahooapis.com/AnswersService/V1/getByCategory?appid=dj0yJmk9QTY3anduM0E1SG9MJmQ9WVdrOVZVVjFabk5UTkdjbWNHbzlNelV4TVRZeSZzPWNvbnN1bWVyc2VjcmV0Jng9Y2M-&category_id=396545671&output=json&start=150&region=vn&sort=date_asc&results=50

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  catefory_id: 1
+  start: 1
+
+two:
+  catefory_id: 1
+  start: 1

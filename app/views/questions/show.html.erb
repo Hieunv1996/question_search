@@ -1,5 +1,30 @@
-<p id="notice"><%= notice %></p>
-
-
-<%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', questions_path %>
+<div class="alert-message block-message warning">
+  <div class="alert-message block-message success" style="display:inline-block;width:120px;vertical-align:top">
+    <%= image_tag(@question.user_photo_url) %></br>
+    <%= @question.user_id %></br>
+    <%= @question.user_nick %></br>
+    <%= @question.date %>
+  </div>
+  <div class="alert-message block-message info" style="display:inline-block; width:480px;vertical-align:top">
+    <%= @question.question_id %></br>
+    <h5>Question: </h5><%= @question.subject %></br>
+    <%= @question.content %></br>
+    <h5>Answer: </h5><%= @question.chosen_answer %>
+  </div>
+</div>
+  <ul>
+      
+      
+      <li><%= @question.timestamp %></li>
+      <li><%= link_to @question.link, @question.link %></li>
+      <li><%= @question.qtype %></li>
+      <li><%= @question.category_id %></li>
+      <li><%= @question.category_name %></li>
+      <li><%= @question.num_answers %></li>
+      <li><%= @question.num_comments %></li>
+      <li><%= @question.chosen_answer %></li>
+      <li><%= @question.chosen_answer_id %></li>
+      <li><%= @question.chosen_answer_nick %></li>
+      <li><%= @question.chosen_answer_timestamp %></li>
+      <li><%= @question.chosen_answer_award_timestamp %></li>
+  </ul>
