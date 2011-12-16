@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(:version => 20111212144621) do
     t.string   "date"
     t.string   "timestamp"
     t.string   "link"
-    t.string   "type"
+    t.string   "qtype"
     t.integer  "category_id"
     t.string   "category_name"
     t.string   "user_id"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(:version => 20111212144621) do
   end
 
   create_table "starts", :force => true do |t|
-    t.integer  "catefory_id"
+    t.integer  "category_id"
     t.integer  "start"
     t.datetime "created_at"
     t.datetime "updated_at"
