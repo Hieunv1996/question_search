@@ -10,6 +10,8 @@ gem 'pry'
 gem 'heroku'
 gem 'will_paginate', '~> 3.0'
 
+gem 'therubyracer'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

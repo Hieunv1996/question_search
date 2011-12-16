@@ -1,4 +1,5 @@
 require 'open-uri'
+require 'will_paginate/array'
 class QuestionsController < ApplicationController
   def update_db
     appid = "appid=dj0yJmk9QTY3anduM0E1SG9MJmQ9WVdrOVZVVjFabk5UTkdjbWNHbzlNelV4TVRZeSZzPWNvbnN1bWVyc2VjcmV0Jng9Y2M-"
@@ -50,12 +51,28 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
-    @questions = Question.paginate(:page =>params[:page])
+    @all = Question.all
+    @categories = []
+    @all.each do |q|
+      if !@categories.include? q.category_name
+        @categories.push (q.category_name)
+      end
+    end
 
+    if params[:category_name]
+      @qs = Question.where(:category_name => params[:category_name])
+    else
+      @qs = Question.all
+    end
+    @questions = @qs.paginate(:page =>params[:page])
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @questions }
     end
+  end
+
+  def show_categories
+    
   end
 
   # GET /questions/1

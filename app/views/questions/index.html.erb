@@ -2,6 +2,10 @@
   <h1>Listing questions</h1>
 <% end %>
 
+<% @categories.each do |c| %>
+  <%= link_to c, "#{questions_path}?category_name=#{c}" %><br />
+<% end %>
+
 <%= form_tag(update_db_questions_path) do %>
   <%= submit_tag("Update Database", :class=>"btn primary") %>
 <% end %>
@@ -13,6 +17,7 @@
     <tr>
       <th>#</th>
       <th>User Nick</th>
+      <th>Category</th>
       <th>Subject</th>
       <th>Content</th>
     </tr>
@@ -22,6 +27,7 @@
     <tr>
       <td><%= index+1 %></td>
       <td><%= question.user_nick %></td>
+      <td><%= question.category_name %></td>
       <td><%= link_to question.subject, question_path(question) %></td>
       <td><%= question.content %></td>
     </tr>
