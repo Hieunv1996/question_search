@@ -1,14 +1,21 @@
 <% content_for :page_name do %>
   <h1>Listing questions</h1>
 <% end %>
-
-<% @categories.each do |c| %>
-  <%= link_to c, "#{questions_path}?category_name=#{c}" %><br />
-<% end %>
-
 <%= form_tag(update_db_questions_path) do %>
   <%= submit_tag("Update Database", :class=>"btn primary") %>
 <% end %>
+
+<%= link_to "All questions", questions_path %><br />
+<% @categories.each do |c| %>
+  <%= link_to c['name'], "#{questions_path}?category_id=#{c['id']}" %><br />
+<% end %>
+
+<% if params[:category_name] %>
+  <h2><%= params[:category_name] %> - <%= @count %></h2>
+<% else %>
+  <h2>All - <%= @count %></h2>
+<% end %>
+
 <div class="apple_pagination" style="margin-bottom:10px">
   <%= will_paginate @questions %>
 </div>
@@ -27,7 +34,7 @@
     <tr>
       <td><%= index+1 %></td>
       <td><%= question.user_nick %></td>
-      <td><%= question.category_name %></td>
+      <td><%= question.category_name %><br />(<%= question.category_id %>)<br /></td>
       <td><%= link_to question.subject, question_path(question) %></td>
       <td><%= question.content %></td>
     </tr>

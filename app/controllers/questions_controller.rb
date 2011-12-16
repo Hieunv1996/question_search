@@ -54,16 +54,23 @@ class QuestionsController < ApplicationController
     @all = Question.all
     @categories = []
     @all.each do |q|
-      if !@categories.include? q.category_name
-        @categories.push (q.category_name)
+      if !@categories.include? ({ 'id' => q.category_id, 'name' => q.category_name })
+        @categories.push ({ 'id' => q.category_id, 'name' => q.category_name })
       end
     end
 
-    if params[:category_name]
-      @qs = Question.where(:category_name => params[:category_name])
+    if params[:category_id]
+      @qs = Question.where(:category_id => params[:category_id])
     else
       @qs = Question.all
     end
+    @count = @qs.count
+    if @count > 1
+      @count = @count.to_s + " questions"
+    else
+      @count = @count.to_s + " question"
+    end
+
     @questions = @qs.paginate(:page =>params[:page])
     respond_to do |format|
       format.html # index.html.erb
