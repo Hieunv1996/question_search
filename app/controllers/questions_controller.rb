@@ -9,7 +9,7 @@ class QuestionsController < ApplicationController
     category = "&category_id=396545664"
     sort = "&sort=date_asc"
 
-    while Start.last.start < 500 do 
+    while Start.last.start < 600 do 
       @start = Start.last.start
       start = "&start=" + @start.to_s
       url = URI.encode(base_url+appid+category+start+region+sort+result+format)
