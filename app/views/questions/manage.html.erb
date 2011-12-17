@@ -1,0 +1,51 @@
+<% content_for :page_name do %>
+  <h1>Yahoo Answer Questions</h1>
+<% end %>
+<ul class="tabs">
+  <li><a href="<%= questions_path %>">All Question</a></li>
+  <li class="active"><a href="<%= manage_questions_path %>">Manage</a></li>
+</ul>
+
+<%= form_for Start.new, :url=>new_category_questions_path do |f| %>
+  <%= f.number_field :category_id %>
+  <%= f.text_field :category_name %>
+  <%= f.submit "Add new category", :class=>"btn" %>
+<% end %>
+
+<%= form_tag(update_db_questions_path) do %>
+  <%= select(:category, :id ,Start.all.collect{|start| [start.category_name, start.category_id ]}) %>
+  <%= select(:category, :start ,@numbers) %>
+  <%= submit_tag("Update Database", :class=>"btn primary") %>
+<% end %>
+
+<table class="bordered-table zebra-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Category_id</th>
+      <th>Category_name</th>
+      <th>Questions.count</th>
+      <th>Start.current</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% Start.all.each_with_index do |start,index| %>
+      <tr>
+        <td><%= index %></td>
+        <td><%= start.category_id %></td>
+        <td><%= link_to start.category_name, "#{questions_path}?category_id=#{start.category_id}&category_name=#{start.category_name}" %></td>
+        <td><%= Question.where("category_id = ?", start.category_id).count %></td>
+        <td>
+          <% if Start.where("category_id = ?", start.category_id).first %>
+            <%= Start.where("category_id = ?", start.category_id).first.start %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    <tr>
+      <td colspan="3"><strong>----------------Total------------------</strong></td>
+      <td><%= Question.all.count %></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>

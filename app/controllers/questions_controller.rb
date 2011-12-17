@@ -1,17 +1,30 @@
 require 'open-uri'
 require 'will_paginate/array'
 class QuestionsController < ApplicationController
+
+  def new_category
+    @start = Start.new(params[:start])
+    @start.save
+    redirect_to manage_questions_path
+  end
+
+  def manage
+    @questions = Question.all
+    @numbers = [500,1000,2000,3000,4000,5000,6000,7000,8000,9000,10000]
+  end
+
   def update_db
     appid = "appid=dj0yJmk9QTY3anduM0E1SG9MJmQ9WVdrOVZVVjFabk5UTkdjbWNHbzlNelV4TVRZeSZzPWNvbnN1bWVyc2VjcmV0Jng9Y2M-"
     base_url="http://answers.yahooapis.com/AnswersService/V1/getByCategory?"
     format = "&output=json"
     region = "&region=vn"
     result = "&results=50"
-    category = "&category_id=396545664"
+    category = "&category_id=" + params["category"]["id"]
     sort = "&sort=date_asc"
+    expected_start = params["category"]["start"].to_i
 
-    while Start.last.start < 600 do 
-      @start = Start.last.start
+    while Start.where("category_id = ?",params["category"]["id"].to_i).first.start < expected_start do 
+      @start = Start.where("category_id = ?",params["category"]["id"].to_i).first.start
       start = "&start=" + @start.to_s
       url = URI.encode(base_url+appid+category+start+region+sort+result+format)
       buffer = open(url).read
@@ -42,11 +55,11 @@ class QuestionsController < ApplicationController
         end # end of if
       end #end of @result["all"]["questions"].each do |question|
 
-      u = Start.last
+      u = Start.where("category_id = ?",params["category"]["id"].to_i).first
       u.start +=@result["all"]["questions"].count
       u.save
     end # end of while
-    redirect_to root_path
+    redirect_to manage_questions_path
   end
   # GET /questions
   # GET /questions.json

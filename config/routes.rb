@@ -2,6 +2,8 @@ QuestionSearch::Application.routes.draw do
   resources :questions do
     collection do
       post 'update_db'
+      get 'manage'
+      post 'new_category'
     end 
   end
 
