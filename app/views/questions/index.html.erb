@@ -7,8 +7,9 @@
 </ul>
 
 <%= link_to "All questions", questions_path %>
+
 <% @categories.each do |c| %>
-   - <%= link_to c['name'], "#{questions_path}?category_id=#{c['id']}&category_name=#{c['name']}" %>
+   - <%= link_to c["name"], "#{questions_path}?category_id=#{c['id']}&category_name=#{c['name']}" %>
 <% end %>
 
 <% if params[:category_name] %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111217044008) do
+ActiveRecord::Schema.define(:version => 20120319232818) do
 
   create_table "questions", :force => true do |t|
     t.datetime "created_at"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20111217044008) do
     t.string   "chosen_answer_nick"
     t.string   "chosen_answer_timestamp"
     t.string   "chosen_answer_award_timestamp"
+    t.string   "token"
   end
 
   create_table "starts", :force => true do |t|

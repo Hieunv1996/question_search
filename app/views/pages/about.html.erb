@@ -1,2 +1,15 @@
 <h1>Pages#about</h1>
-<p>Find me in app/views/pages/about.html.erb</p>
+
+<%= link_to "token", token_questions_path, method: :post, :class=>"btn" %><br>
+<%= link_to "cmd", cmd_questions_path, method: :post, :class=>"btn" %><br>
+u = <%= @u %><br>
+v = <%= @v %><br>
+u0 = <%= @u0.count%><br>
+v0 = <%= @v0.count%><br>
+gs = <%= @gs %><br>
+u1 = <%= @u1 %><br>
+v1 = <%= @v1 %><br>
+[u1*v1] = <%= @m %><br>
+u1*v1 = <%= @m1 %><br>
+sum = <%= @sum %><br>
+u1.v1/( ||u1||.||v1||) = <%= @sim %>

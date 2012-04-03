@@ -3,9 +3,16 @@
       <div class="container">
         <a class="brand" style="margin-left:0px" href="<%= root_path %>">Questions</a>
         <ul class="nav">
-          <form class="pull-left" action="">
-            <input type="text" placeholder="Search">
-          </form>
+          <%= form_for :search, :url => search_questions_path , :class=>"pull-left" do  %>
+            <% if @u %>
+              <%= text_field_tag :text, @u %>
+            <% elsif params[:text] %>
+              <%= text_field_tag :text, params[:text] %>
+            <% else %>
+              <%= text_field_tag :text, nil, :placeholder=>"type here to search" %>
+            <% end %>
+            <%= submit_tag "Search" %>
+          <% end %>
           <%= yield :page_topbar %>
         </ul>
       </div>

@@ -1,0 +1,21 @@
+<div class="search-result">
+  <!-- <%= @result.to_s %> -->
+  <table class="bordered-table zebra-striped">
+  	<% @sorted_list.each do |l| %>
+  		<tr>
+      	<td>
+          <%= l[0] %><br>
+          <%= link_to "Show detail", "#", :class=>"show-detail-button" %>
+          <div class="hidden-detail">
+            <span>set of words <%= l[2] %> </span><br>
+            <span>vector1 <%= l[3] %> </span><br>
+            <span>vector2 <%= l[4] %> </span><br>
+            <span>product <%= l[5] %> </span><br>
+            <span>cosine_product <%= l[6] %> </span><br>
+          </div>
+        </td>
+        <td><%= l[1] %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
